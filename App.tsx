@@ -1,36 +1,20 @@
 import { StatusBar } from 'expo-status-bar';
 import { Alert, StyleSheet, Text, View, PixelRatio, Button, TouchableOpacity, Pressable } from 'react-native';
 import { theme } from './theme';
+import { ShoppingListItem } from './components/ShoppingListItem';
 
 
 export default function App() {
 
-  const handleDelete = ()=>{
-      Alert.alert("Are you sure to delete?", "It will be gone for good!",
-        [
-          {
-            text: "Yes",
-            onPress: () => console.log("On Yes"),
-            style: "destructive"
-          },
-          {
-            text: "Cancel",
-            onPress: () => console.log("On Yes"),
-            style: "cancel"
-          }
-        ]
-      )
-  }
+  
   return (
     <View style={styles.container}>
       
-      <View style={styles.itemContainer}>
-          <Text style={styles.itemText}>{PixelRatio.get()} - Coffee !</Text>
-          <TouchableOpacity style={styles.button} onPress={()=>handleDelete()} activeOpacity={0.1}>
-        <Text style={styles.buttonText}>Delete</Text>
-      </TouchableOpacity>
-      </View>
-      <StatusBar style="auto" />
+     <ShoppingListItem name="coffee"></ShoppingListItem>
+     <ShoppingListItem name="Tea" isCompleted={true}></ShoppingListItem>
+     <ShoppingListItem name="Sugar" isCompleted></ShoppingListItem>
+     
+
     </View>
   );
 }
